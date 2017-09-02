@@ -16,10 +16,10 @@ void loop() {
   {
     if (digitalRead(key) != keys[key]) // key has been pressed or released
     { 
-      if (digitalRead(dataPin))
-        usbMIDI.sendNoteOn(key + 60, 100, CHANNEL); // 60-key offset starts on C_4
+      if (digitalRead(key))
+        usbMIDI.sendNoteOff(key + 60, 100, CHANNEL); // 60-key offset starts on C_4
       else
-        usbMIDI.sendNoteOff(key + 60, 100, CHANNEL);
+        usbMIDI.sendNoteOn(key + 60, 100, CHANNEL);
       keys[key] = !keys[key]; // Flip in memory
     }
   }
